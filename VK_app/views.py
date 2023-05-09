@@ -18,7 +18,7 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
 )
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('id')
-    #http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post']
     serializer_class = UserSerializer
     
     def create(self, request):
@@ -41,7 +41,7 @@ class FriendshipView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]    
     queryset = Friendship.objects.all().order_by('id')
     serializer_class = FriendshipSerializer
-    #http_method_names = ['get', 'post', 'put']
+    http_method_names = ['get', 'post', 'put']
 
     def perform_create(self, serializer):
         user = self.request.user
